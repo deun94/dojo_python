@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkerboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <style>
+        table tr td{
+            width: 50px;
+            height: 50px;
+            border: solid black 1px;
+        }
+        .color1{
+            background-color: blue;
+        }
+        .color2{
+            background-color: red;
+        }
+    </style>
+<body>
+    <div class="container">
+        <div id="navtitle">
+            <h1>checkerboard!!</h1>
+        </div>
+        <table>
+            {%for i in range(0,{{row}}): %}
+            <tr>
+                {% for j in range (0,{{column}}): %}
+                <td class = "color1"></td>
+                <td class = "color2"></td>
+                {% endfor %}
+            </tr>
+            <tr>
+                {% for j in range (0,{{column}}): %}
+                <td class = "color2"></td>
+                <td class = "color1"></td>
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </table>
+
+
+
+    </div>
+</body>
+</html>

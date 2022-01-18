@@ -1,0 +1,15 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.container{
+    margin:0px auto;
+    width: 80%;
+    height: 100vh;
+    background-color: pink;
+    align-content: center;
+}
+h1{
+    color: blue;
+}
