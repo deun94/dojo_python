@@ -1,12 +1,19 @@
+import ninja from Ninb
+
 class Pet:
-    # implement __init__( name , type , tricks ):
+    
+    
+    # implement __init__( name , pet_type , tricks, account):
     def __init__(self, data):
-        self.name = data["name"]
-        self.type = data["type"]
+        self.name = name
+        self.pet_type = pet_type
         self.tricks = data ["tricks"]
         self.sound = data["sound"]
         self.health = 100
         self.energy = 50
+        self.account = account
+
+                        savings : 0.10"};
 
     # implement the following methods:
     # sleep() - increases the pets energy by 25

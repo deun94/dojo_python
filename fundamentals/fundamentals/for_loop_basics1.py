@@ -25,7 +25,8 @@ print("Whoa That Sucker's Huge")
 
 total = 0
 for odd in range (0,500001):
-    if odd % 2 ==1 or odd %2 !=0:
+    if odd % 2 ==1:
+        # because 3/2 = 1 remainder and 3/2 will never be zero so do i really need the second statemnet?
         total += odd
 print(total)
 

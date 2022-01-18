@@ -1,1 +1,3 @@
 import parent
+
+print(locals())

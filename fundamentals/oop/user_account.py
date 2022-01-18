@@ -2,6 +2,7 @@ class BankAccount:
     # don't forget to add some default values for these parameters!
     balance = 0
     # accounts = []
+    # different accounts associated with each user
 
     def __init__(self, int_rate, balance): 
 
@@ -33,10 +34,12 @@ class BankAccount:
 
     def yield_interest(self):
         # your code here
+        self.interest = 0
         if(self.balance > 0):
-            self.int_rate *= self.balance
+            self.interest = self.int_rate * self.balance
             print(f"Your interst is : {self.int_rate}")
         return self
+
 
 # ---------------------------------User class
 class User:
@@ -47,6 +50,7 @@ class User:
         self.name = name
         # self.balance = data["balance"]
         self.account = BankAccount(0.02, 0)
+        # self accounts empty list and then append each account upon creation of a bank account
     
     def make_deposit(self, amount):
         self.account.deposit(amount)
