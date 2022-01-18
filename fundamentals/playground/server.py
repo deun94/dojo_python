@@ -8,15 +8,15 @@ def index():
 
 @app.route("/play")
 def blue_block():
-    return render_template("index.html")
+    return render_template("repeat.html", num = 3, color = "skyblue")
 
 @app.route("/play/<int:num>")
 def repeat_block(num):
-    return render_template("repeat.html", num = num)
+    return render_template("repeat.html", num = num, color = "skyblue")
 
-@app.route("/play/<int:num>/<color>")
+@app.route("/play/<int:num>/<string:color>")
 def num_and_color(num, color):
-    return render_template("color.html", num = num, color = color)
+    return render_template("repeat.html", num = num, color = color)
 
 if __name__=="__main__":
     app.run(debug=True)
