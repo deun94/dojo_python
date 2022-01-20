@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index Default</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+
+        <h1>Default HTML Page!</h1>
+
+        <table class = 'table'>
+            <thead>
+                <tr>
+                    <th scope='col'>#</th>
+                    <th scope='col'>First</th>
+                    <th scope='col'>Last</th>
+                    <th scope='col'>handle</th>
+                    <th scope='col'>birthday</th>
+                    <th scope='col'>age</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for user in users%}
+                <tr>
+                    <th scope = "row">{{user.id}}</th>
+                    <!-- upon clicking the first name it sends you to the user page -->
+                    <th><a href ="/{{user.id}}" >{{user.first_name}}</a></th>
+                    <th>{{user.last_name}}</th>
+                    <th>{{user.handle}}</th>
+                    <th>{{user.birthday}}</th>
+                    <th>{{user.age}}</th>
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+
+    </div>
+</body>
+</html>
