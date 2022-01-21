@@ -30,7 +30,7 @@ def add_user():
     data = {
         "first_name" : request.form['first_name'],
         "last_name" : request.form['last_name'],
-        "handle" : request.form['email'],
+        "email" : request.form['email'],
     }
     # 3 - call on query
     new_user_id = User.create_user(data)
