@@ -1,0 +1,32 @@
+-- INSERT INTO dojos (name, created_at, updated_at)
+-- VALUES ("Karate", Now(), NOW()),
+-- 		("sudo", Now(), NOW()),
+--         ("code", now(), now());
+
+-- SELECT * FROM dojos
+-- SELECT * FROM ninjas
+-- DELETE FROM dojos WHERE id >= 4;
+-- SELECT * FROM dojos
+-- repeat make dojo step again 
+
+-- make three ninjas to first dojo
+-- INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)
+-- Values ("Timothy", "Jones", 30, Now(), NOW(), 1),
+-- 		("Anna", "Goldberg", 15, Now(), NOW(), 1), 
+--         ("Carlos", "Mendez",20, Now(), NOW(), 1);
+-- SELECT * FROM ninjas
+-- WHERE dojo_id = 1
+-- INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)
+-- Values ("who2", "who211", 25, Now(), NOW(), 2),
+-- 		("who22", "who221", 14, Now(), NOW(), 2), 
+--         ("who23", "who231",76, Now(), NOW(), 2);
+-- INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)
+-- Values ("who3", "who311", 45, Now(), NOW(), 3),
+-- 		("who32", "who321", 6, Now(), NOW(), 3), 
+--         ("who33", "who331",45, Now(), NOW(), 3);
+-- SELECT * FROM ninjas
+-- WHERE dojo_id =3
+
+-- SELECT dojos.name, CONCAT(ninjas.first_name," ", ninjas.last_name), dojo_id FROM dojos
+-- JOIN ninjas ON dojos.id = ninjas.dojo_id
+-- WHERE ninjas.id = 9;
