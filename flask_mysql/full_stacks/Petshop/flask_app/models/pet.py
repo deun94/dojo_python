@@ -10,3 +10,5 @@ class Pet:
         
         self.created_at = data["created_at"]
         self.update_at = data["updated_at"]
+
+        self.owner_id = data["owner_id"]
