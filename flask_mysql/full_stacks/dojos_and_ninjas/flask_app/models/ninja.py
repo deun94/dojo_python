@@ -17,6 +17,22 @@ class Ninja:
 
         self.dojo_id = data["dojo_id"]
 
+    @classmethod
+    def get_ninja(cls):
+
+        query = "SELECT * FROM ninjas;"
+
+        results = connectToMySQL('dojos_and_ninjas').query_db(query)
+
+        print(results)
+        ninjas = []
+
+        for ninja_data in results:
+
+            ninjas.append( cls(ninja_data) )
+        return ninjas
+
+
 # ==========================================
 # adding new ninja
 # =================================
@@ -31,3 +47,35 @@ class Ninja:
         print(results)
 
         return results
+
+# # ================================================
+# # editing one ninja info
+# # ===============================================
+#     @classmethod
+#     def edit_ninja(cls, data):
+
+#         query = """UPDATE ninjas SET 
+#         first_name = %(first_name)s, last_name = %(last_name)s, age = %(age)s,WHERE id = %(ninja_id)s;"""
+
+#         results = connectToMySQL('dojos_and_ninjas').query_db(query, data)
+
+#         print(results)
+
+#         return
+
+# # ===========================================
+# # delete one ninja info
+# # ===========================================
+
+#     @classmethod
+#     def delete_ninja(cls, data):
+
+#         query = """DELETE FROM ninjas 
+#         WHERE id = %(ninja_id)s;"""
+
+#         results = connectToMySQL('dojos_and_ninjas').query_db(query, data)
+
+
+#         print(results)
+
+#         return

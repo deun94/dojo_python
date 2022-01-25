@@ -8,8 +8,9 @@ from flask_app.models.ninja import Ninja
 def newNinja():
 
     dojos = Dojo.show_all()
+    ninjas = Ninja.get_ninja()
 
-    return render_template("add_ninja.html", dojos = dojos)
+    return render_template("add_ninja.html", dojos = dojos, ninjas = ninjas)
 
 @app.route("/add_ninja", methods =["POST"])
 

@@ -1,0 +1,38 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.container{
+    height: 100vh;
+    padding: 20px;
+}
+
+#surveybox{
+    padding: 50px 20px 20px;
+    margin: 0px auto;
+    background-color: black;
+    width: 50%;
+    height: 100%;
+    color: white;
+    /* display: block;
+    align-items: flex-start; */
+}
+
+#form{
+    display: flex;
+    flex-direction: column;
+}
+
+h1{
+    color: yellow;
+}
+
+.commentbox{
+    width: 80%;
+    height: 30%;
+}
+.resultbox{
+    width: 40%;
+    height: 60%;
+}
