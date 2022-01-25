@@ -22,10 +22,10 @@ class User:
         if len(data["name"]) < 3:
             flash("Name must be at least 3 characters.")
             is_valid = False
-        if len(data["location"]) < 1:
+        if len(data["location"]) =="":
             flash("Please select location!")
             is_valid = False
-        if len(data["language"]) <1:
+        if len(data["language"]) =="":
             flash("Please Select Language!")
             is_valid = False
         if len(data["comment"]) > 110:
