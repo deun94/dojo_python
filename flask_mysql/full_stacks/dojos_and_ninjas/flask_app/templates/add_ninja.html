@@ -12,14 +12,28 @@
     <div class="container">
         <h1> Add a new Ninja</h1>
         <div class ="new">
+            <a class="btn btn-info float-end" href="/dojos">Home</a> 
             <h1> New Ninja</h1>
-            <form action = "/ninjas" method = "post">
+            <form action = "/add_ninja" method = "post">
+
+                <label>Select Dojo</label>
+                <select name="dojo_id">
+                    {% for dojo in dojos%}
+                    <option value ="{{dojo.id}}">{{dojo.name}} </option>
+                    <!--by selecting the name we pass back the value of the corresponding dojo id  -->
+                    {% endfor %}
+                </select>
+
                 <label for ="first_name"> First Name: </label>
                 <input type="text" name = "first_name">
+
                 <label for ="last_name"> Last Name: </label>
                 <input type="text" name = "last_name">
+
                 <label for ="age"> Age </label>
-                <input type="text" name = "age">
+                <input type="number" name = "age">
+
+                <input class ="btn btn-primary" type ="submit" value="Add a New Ninja!">
             </form>
         </div>
 
