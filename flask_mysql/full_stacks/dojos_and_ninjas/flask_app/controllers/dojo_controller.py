@@ -2,6 +2,10 @@ from flask_app import app
 from flask import render_template, request, session, redirect
 from flask_app.models.dojo import Dojo
 
+@app.route("/")
+def index():
+    return redirect("/dojos")
+
 @app.route("/dojos")
 def dojos():
     dojos = Dojo.show_all()
@@ -17,16 +21,16 @@ def dojos():
 # ========================================
 
 @app.route("/dojos/<int:dojo_id>")
-def one_dojo(dojo_id):
+def dojo_with_ninjas(dojo_id):
     data = {
         "dojo_id" : dojo_id
     }
 
-    dojo = Dojo.one_dojo(data)
+    dojos_with_ninjas = Dojo.get_dojo_with_ninjas(data)
 
-    print(dojo)
+    # print(dojo)
 
-    return render_template("show_dojo.html", dojo = dojo)
+    return render_template("show_dojo.html", dojo = dojos_with_ninjas)
 
 
 # ===========================================

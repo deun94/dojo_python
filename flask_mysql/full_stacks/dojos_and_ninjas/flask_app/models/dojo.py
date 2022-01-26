@@ -68,23 +68,35 @@ class Dojo:
 # getting ninjas attached to selected dojo
     @classmethod
     def get_dojo_with_ninjas(cls, data):
-        query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id = ninjas.id WHERE dojos.id = %(id)s;"
+        query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id WHERE dojos.id = %(dojo_id)s;"
+        # remember where to join and which data to pass in
 
         results = connectToMySQL("dojos_and_ninjas").query_db(query, data)
 
         dojo = cls(results[0])
+
         for row_data in results:
 
             ninja_data={
-                "id" : row_data["id"],
+                "id" : row_data["ninjas.id"],
             # don't forget the id
                 "first_name" : row_data["first_name"],
                 "last_name" : row_data["last_name"],
                 "age" : row_data["age"],
 
-                "created_at" : row_data["created_at"],
-                "updated_at" : row_data["updated_at"],
-
-                "dojo_id" : row_data["dojo_id"],
+                "created_at" : row_data["ninjas.created_at"],
+                "updated_at" : row_data["ninjas.updated_at"],
+                # REMEMBER to specify specify
+                "dojo_id" : row_data["dojo_id"]
+                # needs to match exactly to the init of the other class data
             }
             dojo.ninjas.append( ninja.Ninja(ninja_data))
+        return dojo
+
+
+# for editing
+    @classmethod
+    def get_ninja_with_dojo(cls, data):
+        query = "SELECT * FROM ninjas LEFT JOIN dojos ON ninjas.dojo_id = dojos.id WHERE ninjas.id = %(ninja_id)s;"
+
+        results = connectToMySQL("dojos_and_ninjas").query_db(query, data)

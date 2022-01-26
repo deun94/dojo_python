@@ -1,4 +1,5 @@
 from flask_app.config.mysqlconnection import connectToMySQL
+from flask_app.models import dojo
 # connecting to our queries
 
 # =====================================
@@ -39,8 +40,8 @@ class Ninja:
 
     @classmethod
     def add_ninja(cls, data):
-        query = """INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)
-        VALUES (%(first_name)s, %(last_name)s, %(age)s, NOW(), NOW(), %(dojo_id)s);"""
+        query = """INSERT INTO ninjas (first_name, last_name, age, created_at, dojo_id)
+        VALUES (%(first_name)s, %(last_name)s, %(age)s, NOW(), %(dojo_id)s);"""
 
         results = connectToMySQL('dojos_and_ninjas').query_db(query, data)
 
@@ -51,17 +52,34 @@ class Ninja:
 # # ================================================
 # # editing one ninja info
 # # ===============================================
-#     @classmethod
-#     def edit_ninja(cls, data):
+# for editing
+    @classmethod
+    def get_ninja_with_dojo(cls, data):
+        query = "SELECT * FROM ninjas LEFT JOIN dojos ON ninjas.dojo_id = dojos.id WHERE ninjas.id = %(ninja_id)s;"
 
-#         query = """UPDATE ninjas SET 
-#         first_name = %(first_name)s, last_name = %(last_name)s, age = %(age)s,WHERE id = %(ninja_id)s;"""
+        results = connectToMySQL("dojos_and_ninjas").query_db(query, data)
 
-#         results = connectToMySQL('dojos_and_ninjas').query_db(query, data)
+        ninja = cls(results[0])
 
-#         print(results)
+        dojo_data = {
+            "id" : results[0]["dojos.id"],
+            # don't forget the id
+            "name" : results[0]["name"],
 
-#         return
+            "created_at" : results[0]["dojos.created_at"],
+            "updated_at" : results[0]["dojos.updated_at"]
+        }
+        ninja.dojo = dojo.Dojo(dojo_data)
+
+        return ninja
+
+    @classmethod
+    def update_ninja(cls, data):
+        query = "UPDATE ninjas SET first_name = %(first_name)s, last_name = %(last_name)s, age = %(age)s, updated_at = NOW(), dojo_id = %(dojo_id)s;"
+
+        results = results = connectToMySQL("dojos_and_ninjas").query_db(query, data)
+
+        return
 
 # # ===========================================
 # # delete one ninja info

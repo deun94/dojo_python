@@ -13,7 +13,7 @@
         <a class="btn btn-info float-end mt-3" href="/dojos">Home</a> 
         <h1> Showing Ninjas in {{dojo.name}} Dojo </h1>
 
-        <h3>{{ dojo.name}} </h3>
+        <h3>{{dojo.name}} </h3>
         <table class= "table">
             <thead>
                 <tr>
@@ -27,7 +27,8 @@
             </thead>
 
             <tbody>
-                {% for ninja in ninjas%}
+                {% for ninja in dojo.ninjas%}
+                <!-- going into the ninjas IN dojo -->
                 <tr>
                     <th scope = "row">{{ninja.id}}</th>
 
@@ -37,7 +38,7 @@
                     <th>{{ninja.created_at}}</th>
                     <th>
                         <a class = "edit" href ="/{{ninja.id}}/edit">Edit</a> ||
-                        <a class = "text-danger" href ="/{{ninja.id}}/delete">Delete</a>
+                        <a class = "text-danger" href ="/dojo/{{ninja.id}}/delete">Delete</a>
                     </th>
                 </tr>
                 {% endfor %}

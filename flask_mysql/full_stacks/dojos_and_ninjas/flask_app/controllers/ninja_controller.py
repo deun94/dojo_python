@@ -17,6 +17,8 @@ def newNinja():
 def add_ninja():
 
     data = {
+        "dojo_id" : request.form["dojo_id"],
+        # the key needs to match the passing in data 
         "first_name" : request.form["first_name"],
         "last_name" : request.form["last_name"],
         "age" : request.form["age"]
@@ -27,3 +29,33 @@ def add_ninja():
 
     return redirect("/dojos")
     # remember it's not = , it is key : value
+
+@app.route("/<int:ninja_id>/edit")
+def edit_ninja(ninja_id):
+
+    data = {
+        "ninja_id" : ninja_id
+    }
+
+    ninja = Ninja.get_ninja_with_dojo(data)
+
+    return render_template("edit_ninja.html", ninja = ninja)
+
+@app.route("/<int:ninja_id>/update", methods = ["POST"])
+def update_ninja(ninja_id):
+
+    dojos = Dojo.show_all()
+
+    data = {
+        "first_name" : request.form["first_name"],
+        "last_name" : request.form["last_name"],
+        "age": request.form["age"],
+
+        "ninja_id" : ninja_id
+    }
+
+    
+    Ninja.update_ninja(data)
+
+
+    return redirect("/dojos", dojos = dojos)
