@@ -9,6 +9,7 @@ class User:
 
         self.name = data["name"]
         self.location = data["location"]
+        self.gender = data["gender"]
         self.language = data["language"]
         self.comment = data["comment"]
 
@@ -22,15 +23,19 @@ class User:
         if len(data["name"]) < 3:
             flash("Name must be at least 3 characters.")
             is_valid = False
-        if len(data["location"]) =="":
+
+        if data["location"] =="":
             flash("Please select location!")
             is_valid = False
-        if len(data["language"]) =="":
+
+        if data["language"] =="":
             flash("Please Select Language!")
             is_valid = False
+
         if len(data["comment"]) > 110:
             flash("Comment cannot be longer than 110 characters!")
             is_valid = False
+        return is_valid
 
     @classmethod
     def create_user(cls, data):
@@ -41,7 +46,9 @@ class User:
         results = connectToMySQL("dojo_survey_schema").query_db(query, data)
         return results
     
-    # @classmethod
-    # def show_one(cls, data):
-    #     query = """
-    #     SELECT """
+    @classmethod
+    def show_one(cls, data):
+        query = """SELECT * FROM dojos WHERE id = %(id)s;"""
+
+        results = results = connectToMySQL("dojo_survey_schema").query_db(query, data)
+        return results

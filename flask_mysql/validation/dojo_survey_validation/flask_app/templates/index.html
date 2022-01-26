@@ -13,19 +13,6 @@
     <div class="container w-50 bg-dark">
         <div id = "surveybox" class="homepage">
             <h1 class="text-warning text-center">Dojo Survey</h1>
-            {% with messages = get_flashed_messages() %}
-            <!-- declare a variable called messages -->
-            {% if messages %}
-            <!-- check if there are any messages -->
-            {% for message in messages %}
-            <!-- loop through the messages -->
-            <small class="text-danger">{{message}}</small class="text-danger">
-            <!-- display each message in a paragraph tag -->
-            {% endfor %}
-            {% endif %}
-            {% endwith %}
-
-
             <!-- submit name -->
             <form id ="form" class ="text-white" action='/process' method ='post'>
                 <div class="mb-3">
@@ -33,20 +20,21 @@
                     <input type='text' class = "form-control" name = 'name'>
                 </div>
                 
-            <!-- submit gender/radio
+            <!-- submit gender/radio-->
                 <div class="mb-3">
                     <p>Please Select Your Gender</p>
                     <input type="radio" id="male" name="gender" value="male">Male
 
                     <input type="radio" id="female" name="gender" value="female">Female
                 </div>
-                -->
             
             <!-- submit location info -->
                 <div class="mb-3">
                     <label for ='location' class="form-label">Dojo Location: </label>
                     <select  class="form-control" name ='location'>
-                        <option value="" disabled selected hidden>-- Select Your Location --</option>
+                        <!-- <option value="" disabled selected hidden>-- Select Your Location --</option> -->
+                        <!-- disabled is sending nothing back -->
+                        <option value="" selected hidden>-- Select Your Location --</option>
                         <option value="Chicago">Chicago</option>
                         <option value="Los Angelos">Los Angelos</option>
                         <option value="New York">New York</option>
@@ -58,7 +46,7 @@
                 <div class="mb-3">
                     <label for ='language' class="form-label">Favorite Language: </label>
                     <select class = "form-control" name ='language'>
-                        <option value="" disabled selected hidden>-- Select A Language  --</option>
+                        <option value="" selected hidden>-- Select A Language  --</option>
                         <option value="Python">Python</option>
                         <option value ="Java">Java</option>
                         <option value="C#">C#</option>
@@ -77,7 +65,17 @@
 
                 <input class ="btn btn-primary" type='submit' value='submit'>
             </form>
-
+            {% with messages = get_flashed_messages() %}
+            <!-- declare a variable called messages -->
+            {% if messages %}
+            <!-- check if there are any messages -->
+            {% for message in messages %}
+            <!-- loop through the messages -->
+            <small class="text-danger">{{message}}</small class="text-danger">
+            <!-- display each message in a paragraph tag -->
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         </div>
 
 
