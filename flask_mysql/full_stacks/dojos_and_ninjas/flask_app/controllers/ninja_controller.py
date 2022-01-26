@@ -59,3 +59,14 @@ def update_ninja(ninja_id):
 
 
     return redirect("/dojos", dojos = dojos)
+
+@app.route("/<int:ninja_id>/delete")
+def delete_ninja(ninja_id):
+
+    data = {
+        "ninja_id" : ninja_id
+    }
+
+    Ninja.delete_ninja(data)
+
+    return redirect("/dojos")

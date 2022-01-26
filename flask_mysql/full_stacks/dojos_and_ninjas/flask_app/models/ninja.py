@@ -81,19 +81,19 @@ class Ninja:
 
         return
 
-# # ===========================================
-# # delete one ninja info
-# # ===========================================
+# ===========================================
+# delete one ninja info
+# ===========================================
 
-#     @classmethod
-#     def delete_ninja(cls, data):
+    @classmethod
+    def delete_ninja(cls, data):
 
-#         query = """DELETE FROM ninjas 
-#         WHERE id = %(ninja_id)s;"""
+        query = """DELETE FROM ninjas 
+        WHERE id = %(ninja_id)s;"""
 
-#         results = connectToMySQL('dojos_and_ninjas').query_db(query, data)
+        results = connectToMySQL('dojos_and_ninjas').query_db(query, data)
 
 
-#         print(results)
+        print(results)
 
-#         return
+        return
