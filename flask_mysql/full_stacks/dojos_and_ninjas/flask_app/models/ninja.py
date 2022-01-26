@@ -97,3 +97,4 @@ class Ninja:
         print(results)
 
         return
+        
