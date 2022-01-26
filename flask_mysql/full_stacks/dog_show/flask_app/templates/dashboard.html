@@ -10,9 +10,35 @@
 </head>
 <body>
     <div class="container">
-        <h1>Welcome <span class="text-primary">{{owner.first_name}} {{owner.last_name}}!</span></h1>
-
         <a href="/logout" class="btn btn-danger float-end mt-2">Log out </a>
+        <h1>Welcome to the Dog show<span class="text-primary">{{owner.first_name}} {{owner.last_name}}!</span></h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Breed</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Owner</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for dog in all_dogs%}
+                <tr>
+                    <th scope="row"><a href="/dog/{{dog.id}}">{{dog.name}}</a></th>
+                    <td>{{dog.breed}}</td>
+                    <td>{{dog.age}}</td>
+                    <td>{{dog.owner.first_name}}</td>
+                    <td>
+                        <a href="dog/{{dog.id}}/edit">Edit</a>
+                        <a href="dog/{{dog.id}}/delete">Delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href ="/new_dog" class = "btn btn-warning mt-2"> Add a dog!</a>
     </div>
 
 </body>

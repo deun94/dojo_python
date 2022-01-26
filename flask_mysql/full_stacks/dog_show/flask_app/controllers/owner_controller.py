@@ -2,6 +2,7 @@ from flask_app import app
 # for app.route
 from flask import render_template, redirect, request, session, flash
 from flask_app.models.owner import Owner
+from flask_app.models.dog import Dog
 
 from flask_bcrypt import Bcrypt
 bcrypt = Bcrypt(app)
@@ -72,7 +73,8 @@ def dashboard():
         "owner_id" : session["owner_id"]
     }
     owner = Owner.get_by_id(data)
-    return render_template("dashboard.html", owner = owner)
+    all_dogs = Dog.get_all()
+    return render_template("dashboard.html", owner = owner, all_dogs = all_dogs)
 
 # ====================================
 # logout
