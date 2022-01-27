@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container w-60">
+        <a class="col-lg float-end btn btn-info" href = "/user/logout">Logout</a>
+        <a class="col-lg float-end btn btn-primary" href = "/dashboard">Dashboard</a>
+
+
+        <h1 class="text-center text-primary">Add New Recipe!</h1>
+
+        <form class="bg-dark text-white rounded p-4" action = "/new_recipe" method = "post">
+            {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+    
+            {% for message in messages %}
+    
+            <p class="text-danger">{{message}}</p>
+    
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+            <div class ="row">
+                <div class="col w-30">
+                    <div class="mb-3">
+                        <label for ="name" class="form-label"> Name: </label>
+                        <input type="text" class="form-control" name = "name">
+                    </div>
+    
+                    <div class="mb-3">
+                        <label for ="description" class="form-label"> Description: </label>
+                        <textarea class="form-control" name = "description" rows="5" cols="50"></textarea>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for ="instruction" class="form-label"> Instruction: </label>
+                        <textarea  class="form-control" name = "instruction" rows="5" cols="50"></textarea>
+                    </div>
+                    <input class ="btn btn-primary" type ="submit" value="Create">
+                </div>
+
+                <div class="col w-30">
+                    <div class="mb-3">
+                        <label for ="date" class="form-label"> Date Made On: </label>
+                        <input type="date"  class="form-control" name = "date">
+                    </div>
+
+                    <div class="mb-3">
+                        <p>Under Thirty Minutes?:</p>
+                        
+                            <input type="radio" name = "under_thirty" value = "yes" checked>
+                            <label for ="yes"> Yes </label>
+                    
+                            <input type="radio" name = "under_thirty" value = "no">
+                            <label for ="no"> No </label>
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
